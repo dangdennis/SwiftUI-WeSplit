@@ -38,12 +38,6 @@ struct ContentView: View {
                     
                     TextField("Number of people", text: $numberOfPeople)
                         .keyboardType(.numberPad)
-
-//                    Picker("Number of people", selection: $numberOfPeople) {
-//                        ForEach(2 ..< 100) { num in
-//                            Text("\(num) people")
-//                        }
-//                    }
                 }
                 
                 Section(header: Text("How much tip do you want to leave?")) {
@@ -58,8 +52,9 @@ struct ContentView: View {
                     Text("$\(totalPerPerson, specifier: "%.2f")")
                 }
                 
-                Section(header: Text("Check total")) {
+                Section(header: Text("Total")) {
                     Text("$\(grandTotal, specifier: "%.2f")")
+                        .foregroundColor(tipPercentages[tipPercentageSelector] == 0 ? Color.red : Color.black)
                 }
             }
             .navigationBarTitle("WeSplit")
